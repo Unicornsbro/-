@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ロイヤルマッチレビュー - アプリレビューサイト</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(25deg, #cc33ff, #ff9933);
+            color: #fff;
+            padding: 20px 0;
+            border-bottom: #77aaff 3px solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        header h1 {
+            font-family: "hgp行書体";
+            margin: 0;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        .search-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .search-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .search-button img {
+            width: 24px;
+            height: 24px;
+        }
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .hamburger-menu div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+        .main-nav {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .main-nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+            display: inline-block;
+        }
+        .main-nav li {
+            display: inline;
+            margin: 0 20px;
+        }
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-family: "hgp行書体";
+            position: relative;
+            transition: color 0.3s;
+        }
+        .main-nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        .main-nav a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        @media (max-width: 768px) {
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+            header h1 {
+                font-size: 1.8em; 
+                padding-top: 15px; 
+            }
+            .search-container {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                display: block; 
+            }
+            .search-button {
+                margin-bottom: 5px;
+            }
+            .search-button img {
+                width: 20px;
+                height: 20px;
+            }
+            .hamburger-menu {
+                display: block;
+                position: absolute;
+                top: 40px;
+                right: 10px;
+            }
+            .main-nav {
+                display: none;
+                width: 100%;
+            }
+            .main-nav.active {
+                display: block;
+                text-align: center;
+                background-color: #cc33ff;
+                padding: 10px 0;
+            }
+            .main-nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .main-nav li {
+                width: 30%;
+                padding: 10px 0;
+            }
+            .main-nav a {
+                font-size: 16px;
+                padding: 5px 0;
+            }
+        }
+        @media (min-width: 769px) {
+            header {
+                padding-bottom: 40px; 
+            }
+        }
+        main {
+            padding: 20px 0;
+        }
+        article {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .post-meta {
+            color: #555;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .post-image {
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        .affiliate-link {
+            display: inline-block;
+            background: #e478ff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .affiliate-link:hover {
+            background: #555;
+        }
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+            .affiliate-link {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+        footer {
+            background: linear-gradient(25deg, #ff9933, #cc33ff);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="暇つぶしアプリロゴ.jpg" class="logo" alt="Logo">
+        <h1>暇つぶしアプリ紹介所</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">RPG</a></li>
+                <li><a href="#">パズルゲーム</a></li>
+                <li><a href="#">アクションゲーム</a></li>
+                <li><a href="#">クイズ</a></li>
+                <li><a href="#">マンガ</a></li>
+                <li><a href="#">マッチングアプリ</a></li>
+                <li><a href="#">配信アプリ</a></li>
+                <li><a href="#">SNS</a></li>
+                <li><a href="#">音楽</a></li>
+                <li><a href="#">画像編集</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <button class="search-button" onclick="toggleSearch()">
+                <img src="search-icon.png" alt="Search">
+            </button>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <article>
+            <h2>ロイヤルマッチ - 最新レビュー</h2>
+            <p class="post-meta">投稿日: 2024年6月8日</p>
+            <img src="royal-match-review.jpg" class="post-image" alt="Royal Match">
+            <p>ロイヤルマッチは、カラフルなグラフィックス、高品質なサウンドとわかりやすいルールで人気のパズルゲームです。このゲームは、プレイヤーが同じ種類のブロックをマッチさせてレベルをクリアしていくというシンプルなコンセプトに基づいています。しかし、ゲームは進むにつれて難易度が上がり、戦略的な考えが必要となります。</p>
+            <img src="royal-match-review.jpg" class="post-image" alt="Royal Match">
+            <p>特別なパワーアップアイテム（ドローン、ロケット、爆弾、ミラーボール）や様々な難易度のステージ（ノーマル、ハード、スーパーハード）とボーナスステージがあり、プレイヤーを飽きさせません。本当に無料でやっていいのか？と何度も思います。実際に検索予想にも「ロイヤルマッチ　なぜ無料」が候補に挙がっています(笑)</p>
+            <img src="royal-match-review.jpg" class="post-image" alt="Royal Match">
+            <p>はっきり言ってロイヤルマッチは入れておいて損のないゲームです。データ容量もそこまで食わず、オフラインで遊べ（地下鉄やトンネル、飛行機などの圏外の場所でも遊べる！）、簡単に始められる一方で、104エリア、8700ステージあり（2024年5月時点）、長期間楽しむことができる神アプリです。</p>
+            <a href="https://www.example.com/royal-match" class="affiliate-link">このゲームを購入</a>
+        </article>
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a href="TOP.html">Home</a>
+            <a href="プライバシーポリシー.html">Privacy Policy</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+        <p>Copyright © 2024 暇つぶしアプリ紹介所. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.main-nav');
+            nav.classList.toggle('active');
+        }
+
+        function toggleSearch() {
+            let searchBox = document.querySelector('.search-box');
+            if (!searchBox) {
+                searchBox = document.createElement('div');
+                searchBox.classList.add('search-box');
+                searchBox.innerHTML = `
+                    <input type="text" placeholder="サイト内検索..." onkeypress="search(event)">
+                    <button onclick="performSearch()">検索</button>
+                `;
+                document.body.appendChild(searchBox);
+            }
+            searchBox.classList.toggle('active');
+        }
+
+        function search(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        function performSearch() {
+            const query = document.querySelector('.search-box input').value;
+            if (query) {
+                console.log('検索クエリ:', query);
+                alert('検索クエリ: ' + query);
+            }
+        }
+    </script>
+</body>
+</html>

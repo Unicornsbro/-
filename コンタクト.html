@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(25deg, #cc33ff, #ff9933);
+            color: #fff;
+            padding: 20px 0;
+            border-bottom: #77aaff 3px solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        header h1 {
+            font-family: "hgp行書体";
+            margin: 0;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        .search-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .search-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .search-button img {
+            width: 24px;
+            height: 24px;
+        }
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .hamburger-menu div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+        .main-nav {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .main-nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+            display: inline-block;
+        }
+        .main-nav li {
+            display: inline;
+            margin: 0 20px;
+        }
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-family: "hgp行書体";
+            position: relative;
+            transition: color 0.3s;
+        }
+        .main-nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        .main-nav a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        @media (max-width: 768px) {
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+            header h1 {
+                font-size: 1.8em; 
+                padding-top: 15px; 
+            }
+            .search-container {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                display: block; 
+            }
+            .search-button {
+                margin-bottom: 5px;
+            }
+            .search-button img {
+                width: 20px;
+                height: 20px;
+            }
+            .hamburger-menu {
+                display: block;
+                position: absolute;
+                top: 40px;
+                right: 10px;
+            }
+            .main-nav {
+                display: none;
+                width: 100%;
+            }
+            .main-nav.active {
+                display: block;
+                text-align: center;
+                background-color: #cc33ff;
+                padding: 10px 0;
+            }
+            .main-nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .main-nav li {
+                width: 30%;
+                padding: 10px 0;
+            }
+            .main-nav a {
+                font-size: 16px;
+                padding: 5px 0;
+            }
+        }
+        @media (min-width: 769px) {
+            header {
+                padding-bottom: 40px; 
+            }
+        }
+        main {
+            padding: 40px 0;
+        }
+        .content {
+            background: #fff;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .content h2 {
+            border-bottom: 2px solid #cc33ff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            color: #333;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form label {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 600px;
+        }
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #cc33ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            align-self: flex-start;
+        }
+        .contact-form button:hover {
+            background-color: #ff9933;
+        }
+        footer {
+            background: linear-gradient(25deg, #ff9933, #cc33ff);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="暇つぶしアプリロゴ.jpg" class="logo" alt="Logo">
+        <h1>暇つぶしアプリ紹介所</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">RPG</a></li>
+                <li><a href="#">パズルゲーム</a></li>
+                <li><a href="#">アクションゲーム</a></li>
+                <li><a href="#">クイズ</a></li>
+                <li><a href="#">マンガ</a></li>
+                <li><a href="#">マッチングアプリ</a></li>
+                <li><a href="#">配信アプリ</a></li>
+                <li><a href="#">SNS</a></li>
+                <li><a href="#">音楽</a></li>
+                <li><a href="#">画像編集</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <button class="search-button" onclick="toggleSearch()">
+                <img src="search-icon.png" alt="Search">
+            </button>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="content">
+            <h2>お問い合わせ</h2>
+            <form class="contact-form" action="mailto:yuki.yamauchi0315@gmail.com" method="post" enctype="text/plain">
+                <label for="name">氏名</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">題名</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">メッセージ本文</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">送信</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>Copyright © 2024 暇つぶしアプリ紹介所. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.main-nav');
+            nav.classList.toggle('active');
+        }
+
+        function toggleSearch() {
+            let searchBox = document.querySelector('.search-box');
+            if (!searchBox) {
+                searchBox = document.createElement('div');
+                searchBox.classList.add('search-box');
+                searchBox.innerHTML = `
+                    <input type="text" placeholder="サイト内検索..." onkeypress="search(event)">
+                    <button onclick="performSearch()">検索</button>
+                `;
+                document.body.appendChild(searchBox);
+            }
+            searchBox.classList.toggle('active');
+        }
+
+        function search(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        function performSearch() {
+            const query = document.querySelector('.search-box input').value;
+            if (query) {
+                console.log('検索クエリ:', query);
+                alert('検索クエリ: ' + query);
+            }
+        }
+    </script>
+</body>
+</html>
